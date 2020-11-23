@@ -18,13 +18,26 @@ function App() {
   if (error) return <div>Error fetching todos.</div>
 
   return (
-    <div >
-      {data.todos.map(todo => (
-        <p key={todo.id}>
-          <span>{todo.text}</span>
-          <button>&times;</button>
-        </p>
-      ))}
+    <div className="vh-100 code flex flex-column items-center bg-light-purple white pa3 fl-1">
+      <h1 className="f2-1">GraphQL Checklist <span role="img" aria-label="Checkmark">✅</span></h1>
+      {/* Todo Form */}
+      <form className="mb5">
+        <input 
+          className="pa2 f4"
+          type="text"
+          placeholder="Write your todo"
+        />
+        <button className="pa2 f4 bg-green" type="submit">Create</button>
+      </form>
+      {/* Todo List */ }
+      <div className="flex items-center justify-center flex-column">
+        {data.todos.map(todo => (
+          <p key={todo.id}>
+            <span className="pointer list pa1 f3">{todo.text}</span>
+            <button className="bg-transparent bn f4"><span className="red">&times;</span></button>
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
